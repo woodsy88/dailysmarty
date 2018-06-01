@@ -45,4 +45,21 @@ describe 'navigate' do
     end    
 
   end
+
+  describe 'form' do
+
+    it 'can be reached succesfully when navigating to the /new path' do
+      visit new_topic_path
+      fill_in 'topic[title]', with: "Star Wars"
+      click_on "Save"
+      expect(page).to have_content("Star Wars") 
+    end
+
+    it 'allows users to update an existing topic from the /edit page' do
+      visit edit_topic_path(@topic)
+      fill_in 'topic[title]', with: "Star Wars"
+      click_on "Save"
+      expect(page).to have_content("Star Wars")
+    end
+  end
 end
