@@ -4,4 +4,8 @@ class TopicsController < ApplicationController
 		@topics = Topic.all
 	end
 
+	def show
+
+	end
+
 end

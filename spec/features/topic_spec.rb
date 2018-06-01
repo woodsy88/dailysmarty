@@ -23,4 +23,13 @@ describe 'navigate' do
       expect(page).to have_link(@topic.title, href: topic_path(@topic))
     end
   end
+
+  describe 'show' do
+
+    it 'can be reached sucesfully' do
+      visit topic_path(@topic)
+      expect(page.status_code).to eq(200)
+    end
+
+  end
 end
