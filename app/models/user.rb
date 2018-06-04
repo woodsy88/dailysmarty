@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-         after_initialize :set_defaults
+  after_initialize :set_defaults
 
-         validates_presence_of :first_name, :last_name, :username
-          validates :username, uniqueness: true, presence: true, format: { with: /\A[a-zA-Z]+([a-zA-Z]|\d)*\Z/ }
+  validates_presence_of :first_name, :last_name, :username
+  validates :username, uniqueness: true, presence: true, format: { with: /\A[a-zA-Z]+([a-zA-Z]|\d)*\Z/ }
+
+  has_many :posts          
 
          private
 
