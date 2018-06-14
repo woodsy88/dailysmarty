@@ -1,18 +1,34 @@
 class Topics::PostsController < ApplicationController
 
   before_action :set_topic, except: [:new, :create]
-  before_action :set_post, only: [:show]
+  before_action :set_post, only: [:show, :edit, :update]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @posts = @topic.posts
   end
 
   def new
-
+   
   end
 
   def show
    
+  end
+
+  def edit
+    if @post.user_id != current_user.id
+      redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: "You are noth authorized to complete this action"
+    end
+  end
+
+  def update
+
+    if @post.update(post_params)
+      redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: 'Your post was successfully updated.'
+    else
+      render :edit, notice: 'There was an error processing your request!'
+    end
   end
 
   def create
@@ -37,7 +53,7 @@ class Topics::PostsController < ApplicationController
       @post = @topic.posts.find(params[:id])
     end
 
-    def post_params
+    def post_params                                                                                                                                                                 
         params.require(:post).permit(:title, :content, :topic_id)
     end
 end

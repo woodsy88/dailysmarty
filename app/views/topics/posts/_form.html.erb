@@ -1,0 +1,14 @@
+
+
+<%= form_tag form_route(source), method: form_action(source) do %>
+  <%= text_field_tag "post[title]", (@post.title if @post) || "" %>
+  <%= text_field_tag "post[content]", (@post.content if @post) || ""  %>
+
+  <%= collection_select(:post,
+                        :topic_id,
+                        Topic.all,
+                        :id,
+                        :title,
+                        { selected: (params[:topic_id] if params[:topic_id])}) %>
+  <%= submit_tag 'Save' %>
+<% end %>

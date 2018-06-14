@@ -1,16 +1,3 @@
-<%= form_tag create_post_path, method: 'post' do %>
+<h2>New Post</h2>
 
-  <%= text_field_tag "post[title]" %>
-  <%= text_field_tag "post[content]" %>
-
-  <%= collection_select(:post, 
-    :topic_id, 
-    Topic.all, 
-    :id,
-    :title,
-    { selected: (params[:topic_id] if params[:topic_id])}) 
-  %>
-
-  <%= submit_tag 'Save' %>
-
-<% end %>
+<%= render partial: 'form', locals: { source: 'new' }  %>
