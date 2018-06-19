@@ -5,7 +5,7 @@ class Topics::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @posts = @topic.posts
+    @posts = @topic.posts.page(params[:page]).per(10)
   end
 
   def new

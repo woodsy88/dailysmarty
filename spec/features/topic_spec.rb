@@ -20,14 +20,14 @@ describe 'navigate' do
 
     it 'each topic links to its show page' do
       visit topics_path
-      expect(page).to have_link(@topic.title, href: topic_path(@topic))
+      expect(page).to have_link(@topic.title, href: topic_posts_path(topic_id: @topic))
     end
   end
 
   describe 'show' do
 
     before do 
-      visit topic_path(@topic)
+      visit topic_posts_path(topic_id: @topic)
     end
 
     it 'can be reached sucesfully' do

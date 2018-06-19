@@ -1,8 +1,32 @@
-<h1><%= @post.title %></h1>
-<h2><%= @post.topic.title %></h2>
-<p><%= @post.content %></p>
-<p><%= @post.user.full_name %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9 article-content pull-left">
+      <h1 class="col-xs-6 pull-left"><%= @post.title %></h1>
+      <span>By <strong><%= @post.user.full_name %></strong> <%= @post.created_at.strftime("Published: on %m/%d/%Y at %l:%M%P") %></span>
 
-<% if current_user && @post.user_id == current_user.id %>
-  <%= link_to 'Edit Post', edit_topic_post_path(topic_id: @topic.id, id: @post.id) %>
-<% end %>
+      <p><strong>Topic:</strong> <%= @post.topic.title %></p>
+
+      <a href="#show-sidebar" class="btn btn-default btn-green show-sidebar"><span>Show More Details</span></a>
+
+      <div class="clearfix"></div>
+
+      <p class="col-xs-8 first"><%= @post.content %></p>
+
+      <hr/>
+
+      <div class="actions">
+        <% if current_user && @post.user_id == current_user.id %>
+          <%= link_to "Edit Post", edit_topic_post_path(topic_id: @topic.id, id: @post.id), class: 'btn btn-default btn-green' %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-3 article-sidebar pull-right">
+      <div class="next-article">
+        <div class="btn btn-left"></div>
+        <div class="btn btn-right"></div>
+        <h1>Scientists find closest thing yet to Earth-sun twin system</h1>
+        <span>By <strong>Thomas Gibbons-Neff</strong> and <strong>Carol Morell</strong> June 20 at 4:05 PM</span>
+      </div>
+    </div>
+  </div>
+</div>

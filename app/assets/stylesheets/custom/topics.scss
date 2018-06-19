@@ -1,3 +1,12 @@
-// Place all the styles related to the Topics controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.topics {
+  height: 50px;
+  background-color: #13809b;
+  margin: 15px;
+  padding: 10px;
+}
+
+.topics a {
+  font-size: 1.4em;
+  font-weight: 800;
+  color: white;
+}

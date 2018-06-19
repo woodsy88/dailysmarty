@@ -8,7 +8,7 @@ and open the template in the editor.
     Author     : kreso
 */
 
-@import url('fonts.css');
+@import 'fonts.css.erb';
 
 * {
 
@@ -235,6 +235,8 @@ div.bg2 {
     height:99px;
     
     position:relative;
+
+    background: #FBFCFD;   
     
 }
 
@@ -1288,7 +1290,7 @@ ul.articles .article-stats span.icon {
     
     float:left;
     
-    background-image:url(../../images/common/icons.png) !important;
+    background-image:url(<%= image_url('common/icons.png') %>) !important;
     
 }
 
@@ -1795,7 +1797,7 @@ div.article-sidebar .next-article {
 
 div.article-sidebar .next-article .btn {
  
-    background:url(../../images/common/article_actions.png);
+    background:url(<%= image_url('common/article_actions.png') %>);
     
     background-repeat: no-repeat;
     

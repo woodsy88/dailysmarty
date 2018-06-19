@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :topics do
+  resources :topics, except: [:show] do
     scope module: :topics do
       resources :posts, except: [:new, :create]
     end
