@@ -18,9 +18,18 @@
                     <div class="mask"></div>
                     <%= image_tag('common/guest_image.png') %>
                   </a>
-                    <strong>Welcome Guest!</strong>
-                    <%= link_to 'Login', new_user_session_path %> or
-                    <%= link_to "Sign up", new_user_registration_path %>
+                   
+
+ <strong>Welcome <%= current_user.full_name %></strong>
+<% if current_user.is_a?(OpenStruct) %>
+  <%= link_to "Login", new_user_session_path %> or
+  <%= link_to "Register", new_user_registration_path %>
+<% else %>
+    <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+<% end %>
+
+
+
                 </div>
             </div>
             <div class="clearfix"></div>
