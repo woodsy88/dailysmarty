@@ -111,7 +111,7 @@ describe 'post' do
       login_as(@second_user, :scope => :user)
       visit edit_topic_post_path(topic_id: @topic.id, id: @post.id)
       # expect current path to equal the post show page
-      expect(current_path).to eq(topic_post_path(topic_id: @topic.id, id: @post.id))
+      expect(current_path).to eq(root_path)
     end
 
     it 'does not allow a user to access the edit page if they are not signed in' do
