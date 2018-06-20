@@ -9,20 +9,17 @@ class Topics::PostsController < ApplicationController
   end
 
   def new
-   
   end
 
   def show
-   
   end
 
   def edit
-    if @post.user_id != current_user.id
-      redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: "You are noth authorized to complete this action"
-    end
+    authorize @post
   end
 
   def update
+    authorize @post
 
     if @post.update(post_params)
       redirect_to topic_post_path(topic_id: @post.topic_id, id: @post), notice: 'Your post was successfully updated.'
