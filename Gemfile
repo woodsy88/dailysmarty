@@ -65,3 +65,6 @@ gem 'kaminari', '~> 1.1', '>= 1.1.1'
 gem 'pundit', '~> 1.1'
 
 gem 'gritter', '~> 1.2'
+
+gem 'administrate', '~> 0.10.0'
+gem 'bourbon'

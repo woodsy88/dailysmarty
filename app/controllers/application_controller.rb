@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery with: :exception
 
+  # before_action :get_subdomain
+
 # prevents current_user from ever returning a nil value (not logged in user)
   def current_user
     # super = use the devise current_user method || create a new open struct with 1 attr of full name
@@ -17,5 +19,11 @@ class ApplicationController < ActionController::Base
     flash[:alert] = " You are not authorized to access this page"
     redirect_to(request.referrer || root_path)
   end
-  
+
+    # def get_subdomain
+    #   puts "The Subdomain is:"
+    #   puts request.subdomain
+    #   raise
+    # end
+
 end

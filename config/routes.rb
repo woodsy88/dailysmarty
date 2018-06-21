@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+    resources :admin_users
+    resources :posts
+    resources :topics
+
+    root to: "users#index"
+  end
+
   resources :topics, except: [:show] do
     scope module: :topics do
       resources :posts, except: [:new, :create]
